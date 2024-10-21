@@ -16,139 +16,117 @@ querySet – по сути список обьектов заданной мод
 
 from applications.product.models import Product
 
-#Product.objects.all()
-#SELECT * FROM products;
+<h1>Product.objects.all()</h1>
+<p>SELECT * FROM products;</p>
 
-#Product.objects.get(id=1)
-#SELECT * FROM products WHERE id = 1;
+<h1>Product.objects.get(id=1)</h1>
+<p>SELECT * FROM products WHERE id = 1;</p>
 
-#Product.objects.filter(условие1, условие2)
-Product.objects.filter(id=2, name='vlad')
-#SELECT * FROM products WHERE условие AND условие2;
+<h1>Product.objects.filter(id=2, name='vlad')</h1>
+<p>SELECT * FROM products WHERE id = 2 AND name = 'vlad';</p>
 
-from django.db.models import Q
-#Product.objects.filter(Q(условие)|Q(условие2))
-#SELECT * FROM products WHERE условие1 OR условие2;
+<h1>from django.db.models import Q<br>
+Product.objects.filter(Q(id=2) | Q(name='vlad'))</h1>
+<p>SELECT * FROM products WHERE id = 2 OR name = 'vlad';</p>
 
-#Product.objects.filter(~Q(условие))
-#Product.objects.exclude(условие)
-#SELECT * FROM products WHERE NOT условие;
+<h1>Product.objects.filter(~Q(id=2))</h1>
+<p>SELECT * FROM products WHERE NOT id = 2;</p>
 
-#Product.objects.filter(price__gt=50000) #больше
-#SELECT * FROM products WHERE price > 50000;
+<h1>Product.objects.exclude(id=2)</h1>
+<p>SELECT * FROM products WHERE id != 2;</p>
 
-#Product.objects.filter(price__lt=50000) #меньше
-#SELECT * FROM products WHERE price < 50000;
+<h1>Product.objects.filter(price__gt=50000)</h1>
+<p>SELECT * FROM products WHERE price > 50000;</p>
 
-#Product.objects.filter(price=50000) #равно
-#SELECT * FROM products WHERE price = 50000;
+<h1>Product.objects.filter(price__lt=50000)</h1>
+<p>SELECT * FROM products WHERE price < 50000;</p>
 
-#Product.objects.filter(~Q(price=50000))
-#SELECT * FROM products WHERE NOT price = 50000;
+<h1>Product.objects.filter(price=50000)</h1>
+<p>SELECT * FROM products WHERE price = 50000;</p>
 
-#Product.objects.filter(price__gte=50000)
-#SELECT * FROM products WHERE price >= 50000;
+<h1>Product.objects.filter(~Q(price=50000))</h1>
+<p>SELECT * FROM products WHERE NOT price = 50000;</p>
 
-#Product.objects.filter(price__lte=50000)
-#SELECT * FROM products WHERE price <= 50000;
+<h1>Product.objects.filter(price__gte=50000)</h1>
+<p>SELECT * FROM products WHERE price >= 50000;</p>
 
-#Product.objects.filter(category_id__in=['phones', 'notebooks'])
-#SELECT * FROM product WHERE category_id IN ('phones', 'notebooks');
+<h1>Product.objects.filter(price__lte=50000)</h1>
+<p>SELECT * FROM products WHERE price <= 50000;</p>
 
-#Product.objects.filter(price__range=[20000, 50000])
-#SELECT * FROM products WHERE price BETWEEN 20000 AND 50000;
+<h1>Product.objects.filter(category_id__in=['phones', 'notebooks'])</h1>
+<p>SELECT * FROM products WHERE category_id IN ('phones', 'notebooks');</p>
 
-Product.objects.filter(name__exact='Iphone')
-#SELECT * FROM products WHERE name LIKE 'Iphone';
-Product.objects.filter(name__iexact='Iphone')
-#SELECT * FROM products WHERE name ILIKE 'Iphone';
+<h1>Product.objects.filter(price__range=[20000, 50000])</h1>
+<p>SELECT * FROM products WHERE price BETWEEN 20000 AND 50000;</p>
 
-Product.objects.filter(name__startswith='Iphone')
-#SELECT * FROM products WHERE name LIKE 'Iphone%';
-Product.objects.filter(name__istartswith='Iphone')
-#SELECT * FROM products WHERE name ILIKE 'Iphone%';
+<h1>Product.objects.filter(name__exact='Iphone')</h1>
+<p>SELECT * FROM products WHERE name LIKE 'Iphone';</p>
 
-Product.objects.filter(name__contains='Iphone')
-#SELECT * FROM products WHERE name LIKE '%Iphone%';
-Product.objects.filter(name__icontains='Iphone')
-#SELECT * FROM products WHERE name ILIKE '%Iphone%';
+<h1>Product.objects.filter(name__iexact='Iphone')</h1>
+<p>SELECT * FROM products WHERE name ILIKE 'Iphone';</p>
 
-Product.objects.filter(name__endswith='Iphone')
-#SELECT * FROM products WHERE name LIKE '%Iphone';
-Product.objects.filter(name__iendswith='Iphone')
-#SELECT * FROM products WHERE name ILIKE '%Iphone';
+<h1>Product.objects.filter(name__startswith='Iphone')</h1>
+<p>SELECT * FROM products WHERE name LIKE 'Iphone%';</p>
 
-Product.objects.order_by('price')
-#SELECT * FROM products ORDER BY price ASC;
+<h1>Product.objects.filter(name__istartswith='Iphone')</h1>
+<p>SELECT * FROM products WHERE name ILIKE 'Iphone%';</p>
 
-Product.objects.order_by('-price')
-#SELECT * FROM products ORDER BY price DESC;
+<h1>Product.objects.filter(name__contains='Iphone')</h1>
+<p>SELECT * FROM products WHERE name LIKE '%Iphone%';</p>
 
-Product.objects.only('name')
-#SELECT name FROM products;
+<h1>Product.objects.filter(name__icontains='Iphone')</h1>
+<p>SELECT * FROM products WHERE name ILIKE '%Iphone%';</p>
 
-Product.objects.only('name', 'price') # запрашивает указанные поля
-#SELECT name, price FROM products;
+<h1>Product.objects.filter(name__endswith='Iphone')</h1>
+<p>SELECT * FROM products WHERE name LIKE '%Iphone';</p>
 
-Product.objects.defer('name', 'price') # исключает указанные поля
-#SELECT id, description, category_id FROM products;
+<h1>Product.objects.filter(name__iendswith='Iphone')</h1>
+<p>SELECT * FROM products WHERE name ILIKE '%Iphone';</p>
 
-Product.objects.count()
-#SELECT COUNT(*) FROM products;
+<h1>Product.objects.order_by('price')</h1>
+<p>SELECT * FROM products ORDER BY price ASC;</p>
 
-Product.objects.filter(...).count()
-#SELECT COUNT(*) FROM products WHERE ...;
+<h1>Product.objects.order_by('-price')</h1>
+<p>SELECT * FROM products ORDER BY price DESC;</p>
 
-Product.objects.create(name='Apple Iphone 12',
-                       description='awddwdawd',
-                       price=78000,
-                       category_id='phones')
-#INSERT INTO products (name, description, price, category_id) VALUES \
-    # ('Apple Iphone 12', 'dwadaafafaw', 78000, 'phones');
+<h1>Product.objects.only('name')</h1>
+<p>SELECT name FROM products;</p>
 
-Product.objects.bulk_create([
-    Product(...),
-    Product(...)
-]) #множественное создание
+<h1>Product.objects.only('name', 'price')</h1>
+<p>SELECT name, price FROM products;</p>
 
-Product.objects.update(price=50000)
-#UPDATE products SET price=50000;
+<h1>Product.objects.defer('name', 'price')</h1>
+<p>SELECT id, description, category_id FROM products;</p>
 
-Product.objects.filter(...).update(price=50000)
-#UPDATE products SET price=50000 WHERE ...;
+<h1>Product.objects.count()</h1>
+<p>SELECT COUNT(*) FROM products;</p>
 
-Product.objects.filter(id=1).update(price=50000)
-#UPDATE products SET price=50000 WHERE id=1;
+<h1>Product.objects.filter(category_id='phones').count()</h1>
+<p>SELECT COUNT(*) FROM products WHERE category_id = 'phones';</p>
 
-product = Product.objects.get(id=1)
-product.price = 50000
-product.save()
+<h1>Product.objects.create(name='Apple Iphone 12', description='awd', price=78000, category_id='phones')</h1>
+<p>INSERT INTO products (name, description, price, category_id) VALUES ('Apple Iphone 12', 'awd', 78000, 'phones');</p>
 
-#Product.objects.delete()
-#DELETE FROM products;
+<h1>Product.objects.bulk_create([Product(...), Product(...)])</h1>
+<p>INSERT INTO products (...) VALUES (...), (...);</p>
 
-#Product.objects.filter(category_id='phones').delete()
-#DELETE FROM products WHERE category_id = 'phones';
+<h1>Product.objects.update(price=50000)</h1>
+<p>UPDATE products SET price = 50000;</p>
 
-#Product.objects.filter(id=1).delete()
-#DELETE FROM products WHERE id=1;
+<h1>Product.objects.filter(id=1).update(price=50000)</h1>
+<p>UPDATE products SET price = 50000 WHERE id = 1;</p>
 
-#product = Product.objects.get(id=1)
-#product.delete()
+<h1>product = Product.objects.get(id=1)<br>product.price = 50000<br>product.save()</h1>
+<p>UPDATE products SET price = 50000 WHERE id = 1;</p>
 
-#Total number of books.
->>> Book.objects.count()
-2452
+<h1>Product.objects.filter(category_id='phones').delete()</h1>
+<p>DELETE FROM products WHERE category_id = 'phones';</p>
 
-#Total number of books with publisher=BaloneyPress
->>> Book.objects.filter(publisher__name='BaloneyPress').count()
-73
+<h1>product = Product.objects.get(id=1)<br>product.delete()</h1>
+<p>DELETE FROM products WHERE id = 1;</p>
 
-#Average price across all books.
->>> from django.db.models import Avg
->>> Book.objects.all().aggregate(Avg('price'))
-{'price__avg': 34.35}
+<h1>from django.db.models import Avg<br>Book.objects.all().aggregate(Avg('price'))</h1>
+<p>SELECT AVG(price) FROM books;</p>
 
-#Max price across all books.
->>> from django.db.models import Max
->>> Book.objects.all().aggregate(Max('price'))
+<h1>from django.db.models import Max<br>Book.objects.all().aggregate(Max('price'))</h1>
+<p>SELECT MAX(price) FROM books;</p>
